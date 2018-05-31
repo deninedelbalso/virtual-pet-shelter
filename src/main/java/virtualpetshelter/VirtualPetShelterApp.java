@@ -30,7 +30,7 @@ public class VirtualPetShelterApp {
 			System.out.println("Press 4 to adopt a pet");
 			System.out.println("Press 5 to admit a pet");
 
-			choice = input.next();
+			choice = input.nextLine();
 
 			if (choice.equals("1")) {
 				petShelter.feedAll();
