@@ -14,31 +14,27 @@ import java.util.Collection;
 
 public class VirtualPetShelterTest {
 
-	VirtualPetApp underTest;
+	VirtualPetShelter underTest;
 	VirtualPet virtualPet1;
 	VirtualPet virtualPet2;
 
 	@Before
 	public void setUp() {
-		underTest = new VirtualPetApp();
+		underTest = new VirtualPetShelter();
 		virtualPet1 = new VirtualPet("Pookie", "is Ugly", 100, 100, 100);
 		virtualPet2 = new VirtualPet("Dookie", "is Pretty", 100, 100, 100);
 
 	}
-	
 
 	@Test
 	public void shouldReturnNamePookie() {
-		VirtualPet underTest = new VirtualPet("Pookie", "is Ugly", 100, 100, 100);
-		String check = underTest.getName();
+		String check = virtualPet1.getName();
 		assertEquals(check, "Pookie");
 	}
-	
 
 	@Test
 	public void shouldReturnDescriptionOfIsUgly() {
-		VirtualPet underTest = new VirtualPet("Pookie","is Ugly", 100, 100, 100);
-		String check = underTest.getDescription();
+		String check = virtualPet1.getDescription();
 		assertEquals(check, "is Ugly");
 	}
 
@@ -86,4 +82,47 @@ public class VirtualPetShelterTest {
 		assertEquals(check, 100);
 	}
 
+	@Test
+	public void shouldBeAbleToFeedAllPets() {
+		underTest.add(virtualPet1);
+		underTest.add(virtualPet2);
+		underTest.feedAll();
+		int check1 = virtualPet1.getFeed();
+		int check2 = virtualPet2.getFeed();
+		assertEquals(check1, 90);
+		assertEquals(check2, 90);
+
+	}
+
+	@Test
+	public void shouldBeAbleToWaterAllPets() {
+		underTest.add(virtualPet1);
+		underTest.add(virtualPet2);
+		underTest.waterAll();
+		int check1 = virtualPet1.getWater();
+		int check2 = virtualPet2.getWater();
+		assertEquals(check1, 90);
+		assertEquals(check2, 90);
+
+	}
+
+	@Test
+	public void shouldBeAbleToTickAllPets() {
+		underTest.add(virtualPet1);
+		underTest.add(virtualPet2);
+		underTest.tickAll();
+		int check1 = virtualPet1.getWater();
+		int check2 = virtualPet2.getWater();
+		assertEquals(check1, 110);
+		assertEquals(check2, 110);
+	}
+	
+	@Test
+	public void shouldDecreaseBoredomBy10WhenPlaying() {
+		underTest.add(virtualPet1);
+		underTest.play(virtualPet1);
+		int check = virtualPet1.getBoredom();
+		assertEquals(check, 90);
+	
+	}
 }

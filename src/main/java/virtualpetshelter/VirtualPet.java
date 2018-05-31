@@ -63,6 +63,7 @@ public class VirtualPet {
 	}
 	public void boredom() {
 		boredom -= 10;
+	
 
 	}
 
@@ -70,6 +71,11 @@ public class VirtualPet {
 
 	public String getName() {
 		return petName;
+	}
+
+
+	public void play(){		
+		boredom -= 10;
 	}
 
 
